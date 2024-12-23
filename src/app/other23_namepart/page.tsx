@@ -1,4 +1,4 @@
-//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_04/page.tsx
+//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_namepart/page.tsx
 //▼リスト6-2B
 /*
 record
@@ -33,7 +33,7 @@ function Search(){
     <div>
       <h1 className='title'>● Other23_04 (Based on リスト6-2B, by App router)</h1>
       <div>
-        <a href='/page23'>▶ Go back to top page23!</a>
+        <a href='/'>▶ Go back to top!</a>
       </div>
       <p className='msg'>■ data1：</p>
       {data1.map((item, k) => 
@@ -43,10 +43,16 @@ function Search(){
   );
 }
 //**********************************************************************
+function SearchFallback(){
+  return (
+    <>Placeholder</>
+  );
+}
+//**********************************************************************
 function Other(){
   return (
     <>
-      <Suspense>
+      <Suspense fallback={<SearchFallback />}>
         <Search />
       </Suspense>
     </>

@@ -1,4 +1,4 @@
-//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_02/page.tsx
+//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_delete/page.tsx
 //▼リスト6-8B
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 'use client'
@@ -11,9 +11,9 @@ function Search(){
   const params = useSearchParams()
   return (
     <div>
-      <h1 className='title'>● Other23_02 (Based on リスト6-8, by App router)</h1>
+      <h1 className='title'>● Other23_delete (Based on リスト6-8, by App router)</h1>
       <div>
-        <a href='/page23'>▶ Go back to top page23!</a>
+        <a href='/'>▶ Go back to top!</a>
       </div>
       <p className='msg'>
       ■ フォームが送信・受信されました。
@@ -26,10 +26,16 @@ function Search(){
   );
 }
 //**********************************************************************
+function SearchFallback(){
+  return (
+    <>Placeholder</>
+  );
+}
+//**********************************************************************
 function Other(){
   return (
     <>
-      <Suspense>
+      <Suspense fallback={<SearchFallback />}>
         <Search />
       </Suspense>
     </>

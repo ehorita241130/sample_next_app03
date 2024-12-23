@@ -1,4 +1,4 @@
-//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_03/page.tsx
+//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_readsingle/page.tsx
 //▼リスト6-8B
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 'use client'
@@ -13,7 +13,7 @@ function Search(){
     <div>
       <h1 className='title'>● Other20_03 (Based on リスト6-8B, by App router)</h1>
       <div>
-        <a href='/page23'>▶ Go back to top page23!</a>
+        <a href='/'>▶ Go back to top!</a>
       </div>
       <p className='msg'>
         ■ フォームが送信・受信されました。
@@ -29,15 +29,20 @@ function Search(){
   );
 }
 //**********************************************************************
+function SearchFallback(){
+  return (
+    <>Placeholder</>
+  );
+}
+//**********************************************************************
 function Other(){
   return (
-		<>
-      <Suspense>
+    <>
+      <Suspense fallback={<SearchFallback />}>
         <Search />
       </Suspense>
- 	  </>
+    </>
   )
 }
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 export default Other
-

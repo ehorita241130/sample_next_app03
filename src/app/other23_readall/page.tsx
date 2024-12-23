@@ -1,4 +1,4 @@
-//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app/src/app/other23_00/page.tsx
+//堀:~/pnotes/Shouda_Tsuyano_A1257/P5580/sample_next_app03/src/app/other23_readall/page.tsx
 //▼リスト6-2B
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 'use server';//Server Component
@@ -25,7 +25,6 @@ async function openDatabase(){//<1
 async function Home(){//<1
   const db = await openDatabase();
   let sql1 = 'select * from mydata';//This is OK.
-  //let sql1 = 'select * from mydata where id=1';//This is OK.
   const data1 = await db.all(sql1);
   if( dbgFlg1 ){//<2
     console.log(`-- ${path}.Home()#1:\ndata1=${data1}`);//Debug
@@ -38,7 +37,7 @@ async function Home(){//<1
     <main>
       <h1 className='title'>● Index page (リスト6-2B, by App router)</h1>
       <div>
-        <a href='/page23'>▶ Go back to top page23!</a>
+        <a href='/'>▶ Go back to top!</a>
       </div>
       <p className='msg'>■ data1：</p>
       {data1.map((item, k) => 

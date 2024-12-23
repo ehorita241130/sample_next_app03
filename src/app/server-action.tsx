@@ -23,23 +23,23 @@ async function insertData(id, name, mail, age){
   return rtn1;
 }
 //**********************************************************************
-export async function serverAction0(){
-  redirect('/other23_00');
+export async function serverActReadAll(){
+  redirect('/other23_readall');
 }
 //**********************************************************************
-export async function serverAction1(form){
+export async function serverActCreate(form){
   let id = form.get('id');
   let name = form.get('name');
   let mail = form.get('mail');
   let age = form.get('age');
-  console.log(`-- page23/server-action.tsx:serverAction1()#1:`+
+  console.log(`-- page23/server-action.tsx:serverActCreate()#1:`+
               `id=${id},name=${name},mail=${mail},age=${age}` );//For tracing.
   let rtn1 = await insertData(id, name, mail, age);
-  console.log('-- page23/server-action.tsx:serverAction1()#2:rtn1=\n', 
+  console.log('-- page23/server-action.tsx:serverActCreate()#2:rtn1=\n', 
               rtn1 );//For tracing.
   let query = `id=${id}&name=${name}&mail=${mail}&age=${age}`;
   let searchParams = new URLSearchParams(query);
-  redirect(`/other23_01?${searchParams.toString()}`);
+  redirect(`/other23_create?${searchParams.toString()}`);
 }
 //**********************************************************************
 async function deleteData(num){
@@ -49,14 +49,14 @@ async function deleteData(num){
   return rtn1;
 }
 //**********************************************************************
-export async function serverAction2(form){
+export async function serverActDelete(form){
   let id = form.get('input');
   console.log(`-- id=${id}`);
   let rtn1 = await deleteData(id);
-  console.log('-- serverAction2()#1:rtn1=\n', rtn1);//Debug
+  console.log('-- serverActDelete()#1:rtn1=\n', rtn1);//Debug
   let query = `id=${id}`;
   let searchParams = new URLSearchParams(query);
-  redirect(`/other23_02?${searchParams.toString()}`);
+  redirect(`/other23_delete?${searchParams.toString()}`);
 }
 //**********************************************************************
 async function getData(num){
@@ -66,10 +66,10 @@ async function getData(num){
   return data1;
 }
 //**********************************************************************
-export async function serverAction3(form){//<1
+export async function serverActReadSingle(form){//<1
   let num = form.get('input');
   let data1 = await getData(num);
-  console.log('-- serverAction3()#1:data1=\n', data1);//Debug
+  console.log('-- serverActReadSingle()#1:data1=\n', data1);//Debug
   let data1A = undefined;
   if( data1.length >= 1 ){//<2
     data1A = data1[0];
@@ -81,10 +81,10 @@ export async function serverAction3(form){//<1
   let name = data1A.name;
   let mail = data1A.mail;
   let age = data1A.age;
-  console.log(`-- serverAction3()#1:id=${id},name=${name},mail=${mail},age=${age}`);
+  console.log(`-- serverActReadSingle()#1:id=${id},name=${name},mail=${mail},age=${age}`);
   let query = `id=${id}&name=${name}&mail=${mail}&age=${age}`;
   let searchParams = new URLSearchParams(query);
-  redirect(`/other23_03?${searchParams.toString()}`);
+  redirect(`/other23_readsingle?${searchParams.toString()}`);
 }//1>
 //**********************************************************************
 //**********************************************************************
@@ -96,15 +96,15 @@ async function getData4(namepart){
   return data1;
 }
 //**********************************************************************
-export async function serverAction4(form){
+export async function serverActNamepart(form){
   let namepart = form.get('namepart');
-  console.log(`-- serverAction4()#1:namepart=${namepart}`);//Debug
+  console.log(`-- serverActNamepart()#1:namepart=${namepart}`);//Debug
   let data1 = await getData4(namepart);
-  console.log('-- serverAction4()#2:data1=\n', data1);//Debug
+  console.log('-- serverActNamepart()#2:data1=\n', data1);//Debug
   let query = `data=${JSON.stringify(data1)}`;
   let searchParams = new URLSearchParams(query);
-  redirect(`/other23_04?${searchParams.toString()}`);
-  //redirect('/other23_04');
-  //redirect('/other23_00');
+  redirect(`/other23_namepart?${searchParams.toString()}`);
+  //redirect('/other23_namepart');
+  //redirect('/other23_readall');
 }
 //**********************************************************************
